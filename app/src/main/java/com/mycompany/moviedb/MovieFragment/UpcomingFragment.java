@@ -41,6 +41,12 @@ public class UpcomingFragment extends Fragment {
         View v = inflater.inflate(R.layout.toprated_fragment_layout, container, false);
         GridView gv = (GridView) v.findViewById(R.id.toprated_gridview);
 
+        progressDialog=new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+
+
         movieList = new ArrayList<>();
 
         adapter = new GridImageAdapter(getActivity(), movieList);

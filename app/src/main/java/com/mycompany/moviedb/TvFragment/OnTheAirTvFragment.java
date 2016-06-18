@@ -1,6 +1,7 @@
 package com.mycompany.moviedb.TvFragment;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -32,6 +33,7 @@ import static android.support.v7.widget.LinearLayoutManager.HORIZONTAL;
 public class OnTheAirTvFragment extends Fragment {
     ArrayList<Tv> TvList;
     RecyclerViewTvAdapter adapter;
+    ProgressDialog progressDialog;
 
 
     @Nullable
@@ -39,6 +41,12 @@ public class OnTheAirTvFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recycler_view_layout, container, false);
         final RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+
+        progressDialog=new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+
 
         TvList = new ArrayList<>();
 
@@ -85,6 +93,7 @@ public class OnTheAirTvFragment extends Fragment {
                 Log.i("movie data", String.valueOf(TvList.size()));
 
                 adapter.notifyDataSetChanged();
+                progressDialog.hide();
             }
 
             @Override
