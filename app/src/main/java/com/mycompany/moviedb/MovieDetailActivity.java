@@ -1,6 +1,7 @@
 package com.mycompany.moviedb;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,11 +19,20 @@ import com.mycompany.moviedb.YoutubeFragment.YouTubeFragment;
 public class MovieDetailActivity extends AppCompatActivity {
 
     TextView genre, overview, rate, moviename;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+
+
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,8 +67,11 @@ public class MovieDetailActivity extends AppCompatActivity {
         overview.setText(movie.getDescription());
         rate.setText(String.valueOf(movie.getRating()));
         moviename.setText(movie.getTitle());
+        progressDialog.hide();
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
