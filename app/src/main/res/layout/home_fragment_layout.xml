@@ -4,29 +4,35 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:text="Now playing movies"
-        android:textSize="15dp"
-        android:textColor="#ffffff"/>
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:padding="10dp"
+        android:layout_weight="1"/>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:id="@+id/movieFrame"></FrameLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="On the air"
-        android:textSize="15dp"
-        android:textColor="#ffffff"/>
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="On Air"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="20dp"/>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:id="@+id/tvFrame"></FrameLayout>
 
 

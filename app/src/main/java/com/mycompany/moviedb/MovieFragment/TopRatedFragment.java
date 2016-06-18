@@ -1,6 +1,7 @@
 package com.mycompany.moviedb.MovieFragment;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,6 +33,7 @@ public class TopRatedFragment extends Fragment {
 
     ArrayList<Movie> movieList;
     GridImageAdapter adapter;
+    ProgressDialog progressDialog;
 
 
     @Nullable
@@ -39,6 +41,11 @@ public class TopRatedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.toprated_fragment_layout, container, false);
         GridView gv = (GridView) v.findViewById(R.id.toprated_gridview);
+
+        progressDialog=new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
 
         movieList = new ArrayList<>();
 
@@ -71,6 +78,7 @@ public class TopRatedFragment extends Fragment {
                 Log.i("movie data", String.valueOf(movieList.size()));
 
                 adapter.notifyDataSetChanged();
+                progressDialog.hide();
             }
 
             @Override

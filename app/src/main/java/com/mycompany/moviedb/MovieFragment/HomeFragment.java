@@ -24,12 +24,14 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.home_fragment_layout, container, false);
 
-
         Fragment fragment = new NowPlayingMoviesFragment();
         getChildFragmentManager().beginTransaction().replace(R.id.movieFrame, fragment).commit();
 
         Fragment fragment1 = new OnTheAirTvFragment();
         getChildFragmentManager().beginTransaction().replace(R.id.tvFrame, fragment1).commit();
+
+
+
         return v;
     }
 }

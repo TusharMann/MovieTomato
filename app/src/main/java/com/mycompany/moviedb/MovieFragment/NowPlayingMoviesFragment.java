@@ -1,6 +1,7 @@
 package com.mycompany.moviedb.MovieFragment;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,12 +34,18 @@ public class NowPlayingMoviesFragment extends Fragment{
 
     RecyclerViewMovieAdapter adapter;
     ArrayList<Movie> movieList;
+    ProgressDialog progressDialog;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.recycler_view_layout, container, false);
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+
+        progressDialog=new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
 
         movieList = new ArrayList<>();
 
@@ -85,6 +92,7 @@ public class NowPlayingMoviesFragment extends Fragment{
                 Log.i("movie data", String.valueOf(movieList.size()));
 
                 adapter.notifyDataSetChanged();
+                progressDialog.hide();
             }
 
             @Override
@@ -93,6 +101,7 @@ public class NowPlayingMoviesFragment extends Fragment{
 
             }
         });
+
 
 
         return v;

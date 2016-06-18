@@ -1,6 +1,7 @@
 package com.mycompany.moviedb.MovieFragment;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class UpcomingFragment extends Fragment {
     ArrayList<Movie> movieList;
     GridImageAdapter adapter;
+    ProgressDialog progressDialog;
 
 
     @Nullable
@@ -70,6 +72,7 @@ public class UpcomingFragment extends Fragment {
                 Log.i("movie data", String.valueOf(movieList.size()));
 
                 adapter.notifyDataSetChanged();
+                progressDialog.hide();
             }
 
             @Override
